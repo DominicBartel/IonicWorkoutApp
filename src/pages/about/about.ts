@@ -5,10 +5,12 @@ import { NavController } from 'ionic-angular';
   selector: 'page-about',
   templateUrl: 'about.html'
 })
-export class AboutPage {
+export class AddRoutine {
 
   constructor(public navCtrl: NavController) {
 
+
+    
   }
 
 }
