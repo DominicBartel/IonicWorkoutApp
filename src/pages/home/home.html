@@ -11,9 +11,9 @@
 
 <ion-content padding>
   <ion-list>
-    <li *ngFor="let workout of workouts">
-     {{workout.name}}
-    </li>
+    <ion-item *ngFor="let workout of workouts">
+     {{workout.name}}<button (click)="changeWorkout(workout)">Edit</button>
+    </ion-item>
   </ion-list>
 
 </ion-content>

@@ -6,7 +6,7 @@
      </button>
    </ion-buttons>
     <ion-title>
-      Workout
+      {{params.name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,7 +14,9 @@
 <ion-content>
   <ion-list>
     <ion-list-header></ion-list-header>
-    <ion-item>
+    <ion-item *ngFor = "let set of params.reps">
+      {{set.workout}}
+      {{set.time}}
       
       
     </ion-item>

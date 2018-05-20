@@ -21,8 +21,8 @@ export class HomePage {
     });
   }
 
-  changeWorkout() {
-    this.navCtrl.push(WorkoutPage);
-   
+  changeWorkout(selectedWorkout) {
+    this.navCtrl.push(WorkoutPage, selectedWorkout);
   }
+  
 }
