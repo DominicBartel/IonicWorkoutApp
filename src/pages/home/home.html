@@ -1,10 +1,19 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changeWorkout()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Routines</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  
+  <ion-list>
+    <li *ngFor="let workout of workouts">
+     {{workout.name}}
+    </li>
+  </ion-list>
+
 </ion-content>

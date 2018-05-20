@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { IonicStorageModule  } from '@ionic/storage';
 
 import { AddRoutine } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
 // import { TabsPage } from '../pages/tabs/tabs';
 
@@ -16,7 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     AddRoutine,
-    ContactPage,
+    WorkoutPage,
     HomePage, 
     // TabsPage
   ],
@@ -29,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     AddRoutine,
-    ContactPage,
+    WorkoutPage,
     HomePage,
     // TabsPage
   ],
