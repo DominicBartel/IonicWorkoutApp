@@ -11,9 +11,16 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let workout of workouts">
-     {{workout.name}}<button (click)="changeWorkout(workout)">Edit</button>
-    </ion-item>
-  </ion-list>
+  <ion-item  *ngFor="let workout of workouts">
+    <span (click)="changeWorkout(workout)" >
+        {{workout.name}}
+    </span>
+    <ion-note item-front>{{workout.sets}} Sets</ion-note >
+      <button ion-button icon-only item-end (click)="deleteWorkout(workout)">
+          <ion-icon name="trash"></ion-icon>
+      </button>
+    
+  </ion-item>
+</ion-list>
 
 </ion-content>

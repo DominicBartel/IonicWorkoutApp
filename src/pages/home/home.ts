@@ -25,4 +25,10 @@ export class HomePage {
     this.navCtrl.push(WorkoutPage, selectedWorkout);
   }
   
+  deleteWorkout(workout){
+    for( let i = 0; i < this.workouts.length; i ++){
+      if(this.workouts[i] == workout)
+      this.workouts.splice(i, 1);
+    }
+  }
 }
