@@ -12,16 +12,23 @@ export class WorkoutPage {
   classStorage;
   alertCtrl;
   isNew = false;
+  arrayLocation;
+  workouts;
   
   constructor(public navCtrl: NavController, navParams: NavParams, storage: Storage, alertCtrl: AlertController) {
     this.classStorage = storage;
     this.params = navParams.data;
     this.alertCtrl = alertCtrl;
-   
-    console.log(this.params);
+    
   }
 
   ionViewWillEnter(){
+  
+
+  this.classStorage.get('workouts')
+  .then((val) => {
+    this.workouts = JSON.parse(val);
+
     if(this.params.name == null)
     {
       this.isNew = true;
@@ -42,7 +49,17 @@ export class WorkoutPage {
         document.getElementById('select').focus();
       })
 
-    }
+    }else{
+      for(let i = 0; i < this.workouts.length; i++){
+        if(JSON.stringify(this.workouts[i]) == JSON.stringify(this.params))
+        {
+          this.arrayLocation = i;
+        }
+      }
+    }  
+  });
+  
+    
   }
 
   addRep(){
@@ -51,8 +68,9 @@ export class WorkoutPage {
         workout: 'workout ' + this.params.reps.length, 
         time: 30
       }
-
+      
     )
+    console.log(this.params);
   }
 
   ionViewCanLeave(){
@@ -60,18 +78,15 @@ export class WorkoutPage {
   }
   
   checkWorkout(){
-  let workouts;
-    if(this.isNew){
-      this.classStorage.get('workouts')
-      .then((val) => {
-        workouts = JSON.parse(val);  
-        workouts.push(this.params);
-        this.classStorage.set('workouts', JSON.stringify(workouts));
-      });
-      
-    }else{
-
-    }
+  
+  if(this.isNew){
+    this.workouts.push(this.params);
+  }else{
+    console.log(this.arrayLocation)
+    this.workouts[this.arrayLocation] = this.params;
+  }  
+  
+  this.classStorage.set('workouts', JSON.stringify(this.workouts));
   }
 
   

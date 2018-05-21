@@ -5,7 +5,7 @@
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Routines</ion-title>
+    <ion-title>Workouts</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,6 +14,7 @@
   <ion-item  *ngFor="let workout of workouts" (click)="changeWorkout(workout)">
     <span  >
         {{workout.name}}
+        
     
     <ion-note item-end>{{workout.sets}} Sets</ion-note > </span>
       <button ion-button icon-only item-end (click)="deleteWorkout(workout)" color="danger">

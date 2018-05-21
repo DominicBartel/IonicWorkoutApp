@@ -13,7 +13,8 @@
      </button>
    </ion-buttons>
     <ion-title>
-      {{params.name}}
+      <ion-input [(ngModel)]="params.name"></ion-input>
+
     </ion-title>
     
   </ion-navbar>
@@ -26,10 +27,11 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor = "let set of params.reps">
-      <span>{{set.workout}}</span>
+      <input [(ngModel)]="set.workout">
       <ion-note item-front>{{set.time}}</ion-note>
+      
       <button ion-button icon-only item-end (click)="deleteSet(workout)" color="danger">
-          <ion-icon name="trash" ></ion-icon>
+        <ion-icon name="trash" ></ion-icon>
       </button>
       
       

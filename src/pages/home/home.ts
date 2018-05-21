@@ -30,5 +30,6 @@ export class HomePage {
       if(this.workouts[i] == workout)
       this.workouts.splice(i, 1);
     }
+    this.classStorage.set('workouts', JSON.stringify(this.workouts))
   }
 }
