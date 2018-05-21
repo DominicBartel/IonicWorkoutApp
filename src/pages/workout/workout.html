@@ -1,23 +1,39 @@
 <ion-header>
   <ion-navbar>
    <ion-buttons end>
-     <button ion-button icon-only>
+      <button ion-button icon-only (click)="increaseSets()">
+          <ion-icon name="arrow-up"></ion-icon>
+        </button>
+        <button ion-button color="dark" outline>{{params.sets}}</button>
+        <button ion-button icon-only (click)="decreaseSets()">
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+     <button ion-button icon-only (click)="addRep()">
        <ion-icon name="add"></ion-icon>
      </button>
    </ion-buttons>
     <ion-title>
       {{params.name}}
     </ion-title>
+    
   </ion-navbar>
+ 
+</ion-header>
+<ion-header>
+  
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item *ngFor = "let set of params.reps">
-      {{set.workout}}
-      {{set.time}}
+      <span>{{set.workout}}</span>
+      <ion-note item-front>{{set.time}}</ion-note>
+      <button ion-button icon-only item-end (click)="deleteSet(workout)" color="danger">
+          <ion-icon name="trash" ></ion-icon>
+      </button>
       
       
     </ion-item>
   </ion-list>
+  
 </ion-content>

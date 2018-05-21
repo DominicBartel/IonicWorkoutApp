@@ -17,7 +17,7 @@ export class HomePage {
   ionViewWillEnter(){
     this.classStorage.get('workouts').then((val) => {
       this.workouts = JSON.parse(val);
-     
+     console.log(this.workouts)
     });
   }
 
