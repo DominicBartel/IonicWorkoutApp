@@ -58,9 +58,15 @@ export class WorkoutPage {
       }
     }  
   });
-  
-    
+ }
+
+ changeSets(direction){
+  if(direction == 'increase'){
+    this.params.sets++;
+  } else if(this.params.sets > 0){
+    this.params.sets --;
   }
+}
 
   addRep(){
     this.params.reps.push(
@@ -70,19 +76,26 @@ export class WorkoutPage {
       }
       
     )
-    console.log(this.params);
   }
 
   ionViewCanLeave(){
     this.checkWorkout();
   }
-  
+  checkNumber(time, repLocation){
+
+  console.log('time_' + repLocation);
+  console.log(time);
+    if(!isNaN(time)){
+      this.params.reps[repLocation].time = time;
+    }else{
+      document.getElementById('time_' + repLocation).value = this.params.reps[repLocation].time;
+    }
+  }
   checkWorkout(){
   
   if(this.isNew){
     this.workouts.push(this.params);
   }else{
-    console.log(this.arrayLocation)
     this.workouts[this.arrayLocation] = this.params;
   }  
   

@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
    <ion-buttons end>
-      <button ion-button icon-only (click)="increaseSets()">
+      <button ion-button icon-only (click)="changeSets('increase')">
           <ion-icon name="arrow-up"></ion-icon>
         </button>
         <button ion-button color="dark" outline>{{params.sets}}</button>
-        <button ion-button icon-only (click)="decreaseSets()">
+        <button ion-button icon-only (click)="changeSets('decrease')">
             <ion-icon name="arrow-down"></ion-icon>
           </button>
      <button ion-button icon-only (click)="addRep()">
@@ -26,9 +26,10 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor = "let set of params.reps">
+    <ion-item *ngFor = "let set of params.reps; let i = index" [attr.data-index]="i">
       <input [(ngModel)]="set.workout">
-      <ion-note item-front>{{set.time}}</ion-note>
+      <input id="{{'time_' + i}}" #time value="{{set.time}}" (blur)="checkNumber(time.value,i)">
+      <!-- <ion-note item-front>{{set.time}}</ion-note> -->
       
       <button ion-button icon-only item-end (click)="deleteSet(workout)" color="danger">
         <ion-icon name="trash" ></ion-icon>
