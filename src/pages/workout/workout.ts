@@ -14,6 +14,7 @@ export class WorkoutPage {
   isNew = false;
   arrayLocation;
   workouts;
+  currentClickedNumber;
   
   constructor(public navCtrl: NavController, navParams: NavParams, storage: Storage, alertCtrl: AlertController) {
     this.classStorage = storage;
@@ -81,14 +82,16 @@ export class WorkoutPage {
   ionViewCanLeave(){
     this.checkWorkout();
   }
+  
+  clickedNumber(time){
+    this.currentClickedNumber = time;
+    console.log(this.currentClickedNumber)
+  }
   checkNumber(time, repLocation){
 
-  console.log('time_' + repLocation);
-  console.log(time);
-    if(!isNaN(time)){
-      this.params.reps[repLocation].time = time;
-    }else{
-      document.getElementById('time_' + repLocation).value = this.params.reps[repLocation].time;
+  
+    if(isNaN(time)){
+      this.params.reps[repLocation].time = this.currentClickedNumber;
     }
   }
   checkWorkout(){

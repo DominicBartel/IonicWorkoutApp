@@ -28,7 +28,7 @@
   <ion-list>
     <ion-item *ngFor = "let set of params.reps; let i = index" [attr.data-index]="i">
       <input [(ngModel)]="set.workout">
-      <input id="{{'time_' + i}}" #time value="{{set.time}}" (blur)="checkNumber(time.value,i)">
+      <input id="{{'time_' + i}}" #time value="{{set.time}}" (click)="clickedNumber(time.value)" (blur)="checkNumber(time.value,i)" [(ngModel)]="params.reps[i].time">
       <!-- <ion-note item-front>{{set.time}}</ion-note> -->
       
       <button ion-button icon-only item-end (click)="deleteSet(workout)" color="danger">
