@@ -31,12 +31,27 @@
       <input id="{{'time_' + i}}" #time value="{{set.time}}" (click)="clickedNumber(time.value)" (blur)="checkNumber(time.value,i)" [(ngModel)]="params.reps[i].time">
       <!-- <ion-note item-front>{{set.time}}</ion-note> -->
       
-      <button ion-button icon-only item-end (click)="deleteSet(workout)" color="danger">
+      <button ion-button icon-only item-end (click)="deleteRep(i)" color="danger">
         <ion-icon name="trash" ></ion-icon>
       </button>
       
       
     </ion-item>
   </ion-list>
-  
 </ion-content>
+<ion-footer><div class="buttons">
+    <button ion-button icon-only (click)='playWorkout()'><ion-icon name="play"></ion-icon></button></div>
+    <!-- <ion-grid>
+        <ion-row no-padding no-margin  align-self-center>
+            <ion-col col-5 no-padding>
+                 <button ion-button icon-only><ion-icon name=""></ion-icon></button>
+            </ion-col>
+            <ion-col col-5 no-padding>
+                <button ion-button icon-only><ion-icon name="play"></ion-icon></button>
+            </ion-col>
+            <ion-col col-5 no-padding>
+                <button ion-button icon-only><ion-icon name=""></ion-icon></button>
+            </ion-col> 
+        </ion-row>
+    </ion-grid> -->
+</ion-footer>

@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
+import {TimerPage} from '../pages/timer/timer';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,24 +21,13 @@ export class MyApp {
     ])
     
 
-    this.storage.get('firstLaunch').then(applaunchCount => { // <- Wait for the data to be ready
-
-        // Now the data from the storage is ready!
-
-        console.log(applaunchCount);
-
+    this.storage.get('firstLaunch').then(applaunchCount => { 
         if(applaunchCount) {
-            // This is a second time launch, and count = applaunchCount
-            
         } else {
-           
             storage.set('launchCount','1');
             storage.set('workouts', startWorkouts)
         }
-
         platform.ready().then(() => {
-          // Okay, so the platform is ready and our plugins are available.
-          // Here you can do any higher level native things you might need.
           statusBar.styleDefault();
           splashScreen.hide();
         });

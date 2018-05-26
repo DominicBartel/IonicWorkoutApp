@@ -7,7 +7,7 @@ import { IonicStorageModule  } from '@ionic/storage';
 import { AddRoutine } from '../pages/about/about';
 import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
-// import { TabsPage } from '../pages/tabs/tabs';
+import { TimerPage } from '../pages/timer/timer';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AddRoutine,
     WorkoutPage,
     HomePage, 
-    // TabsPage
+    TimerPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AddRoutine,
     WorkoutPage,
     HomePage,
-    // TabsPage
+    TimerPage
   ],
   providers: [
     StatusBar,

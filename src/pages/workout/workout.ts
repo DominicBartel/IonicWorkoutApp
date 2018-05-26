@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavController, NavParams, Alert } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { TimerPage } from '../timer/timer';
 
 @Component({
   selector: 'page-workout',
@@ -61,6 +62,9 @@ export class WorkoutPage {
   });
  }
 
+ playWorkout(){
+  this.navCtrl.push(TimerPage, this.params)
+ }
  changeSets(direction){
   if(direction == 'increase'){
     this.params.sets++;
@@ -85,11 +89,14 @@ export class WorkoutPage {
   
   clickedNumber(time){
     this.currentClickedNumber = time;
-    console.log(this.currentClickedNumber)
+    
   }
-  checkNumber(time, repLocation){
 
-  
+  deleteRep(setLocation){
+    this.params.reps.splice(setLocation, 1);
+  }
+
+  checkNumber(time, repLocation){
     if(isNaN(time)){
       this.params.reps[repLocation].time = this.currentClickedNumber;
     }
