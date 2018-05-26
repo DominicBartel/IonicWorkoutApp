@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+    
+     
+      <ion-title>
+        {{params.name}}
+      </ion-title>
+      
+    </ion-navbar>
+   
+  </ion-header>
+  <ion-header>
+    
+  </ion-header>
+  
+  <ion-content>
+    <div class="workoutStyle">
+    <h1>{{workout}}</h1>
+    <h2>{{timeLeft}}</h2>
+  </div>
+  </ion-content>
+  <ion-footer><div class="buttons">
+      <button ion-button icon-only><ion-icon name="{{timerIcon}}" (click)="playPause()"></ion-icon></button></div>
+  </ion-footer>
