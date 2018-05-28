@@ -16,12 +16,23 @@ export class HomePage {
 
 
   ionViewWillEnter(){
-    this.classStorage.get('workouts').then((val) => {
-      this.workouts = JSON.parse(val);
-     console.log(this.workouts)
-    });
+
+    this.repeatCheck();
+    
   }
-  
+
+  repeatCheck(){
+    this.classStorage.get('workouts').then(appLaunchCount =>{
+      if(!appLaunchCount){
+        this.repeatCheck()
+      }else{
+        this.classStorage.get('workouts').then((val) => {
+          this.workouts = JSON.parse(val);
+        });
+      }
+      
+    })
+  }
   changeWorkout(selectedWorkout) {
     this.navCtrl.push(WorkoutPage, selectedWorkout);
   }

@@ -11,6 +11,10 @@ import { TimerPage } from '../pages/timer/timer';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Insomnia } from '@ionic-native/insomnia';
+import { NativeAudio } from '@ionic-native/native-audio';
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TimerPage
   ],
   providers: [
+    NativeAudio,
+    Insomnia,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

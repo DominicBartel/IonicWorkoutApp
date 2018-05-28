@@ -105,10 +105,10 @@ export class WorkoutPage {
   
   if(this.isNew){
     this.workouts.push(this.params);
+    this.isNew = false;
   }else{
     this.workouts[this.arrayLocation] = this.params;
   }  
-  
   this.classStorage.set('workouts', JSON.stringify(this.workouts));
   }
 

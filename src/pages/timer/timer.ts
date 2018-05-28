@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Insomnia } from '@ionic-native/insomnia';
+import { NativeAudio } from '@ionic-native/native-audio';
+
 
 
 
@@ -10,38 +13,66 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'timer.html',
 })
 export class TimerPage {
-  timerIcon = 'play';
+  timerIcon = 'pause';
   params;
   workout = "Get Ready!";
   timeLeft = 3;
   paused = false;
   currentWorkout = -1;
+  insomnia;
+  nativeAudio;
+  timerVar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, insomnia: Insomnia, nativeAudio: NativeAudio) {
     this.params = navParams.data;
+    this.insomnia = insomnia;
+    this.nativeAudio = nativeAudio;
+
   }
 
   ionViewDidLoad() {
+    this.insomnia.keepAwake();
+    this.nativeAudio.play('smolBeep')
     this.timer();
 
+
   }
-  
+  playPause() {
+    if (this.paused) {
+      this.paused = false;
+      this.timerIcon = 'pause';
+    } else {
+      this.timerIcon = 'play';
+      this.paused = true;
+    }
+  }
+  ionViewWillLeave() {
+    clearInterval(this.timerVar);
+  }
   timer() {
-    setInterval(x => {
+    this.timerVar = setInterval(x => {
 
       if (!this.paused) {
 
         if (this.timeLeft > 1) {
+          if (this.timeLeft <= 4) {
+            this.nativeAudio.play('smolBeep');
+          }
           this.timeLeft--;
         }
         else if (this.currentWorkout < this.params.reps.length - 1) {
+          this.nativeAudio.play('bigBeep');
           this.currentWorkout++;
-          console.log(this.currentWorkout)
           this.workout = this.params.reps[this.currentWorkout].workout;
           this.timeLeft = this.params.reps[this.currentWorkout].time;
-        }else{
-          this.workout = "Done!"
+        } else {
+          this.nativeAudio.play('smolBeep');
+          this.nativeAudio.play('bigBeep');
+          this.workout = "Done!";
           this.timeLeft = 0;
+          this.insomnia.allowSleepAgain();
+          clearInterval(this.timerVar);
         }
 
 
@@ -50,6 +81,6 @@ export class TimerPage {
 
 
   }
-
-
 }
+
+
