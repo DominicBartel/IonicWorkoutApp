@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NavController, NavParams, Alert } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
@@ -8,6 +8,7 @@ import { TimerPage } from '../timer/timer';
   selector: 'page-workout',
   templateUrl: 'workout.html'
 })
+
 export class WorkoutPage {
   params;
   classStorage;
@@ -16,6 +17,7 @@ export class WorkoutPage {
   arrayLocation;
   workouts;
   currentClickedNumber;
+
   
   constructor(public navCtrl: NavController, navParams: NavParams, storage: Storage, alertCtrl: AlertController) {
     this.classStorage = storage;
@@ -48,6 +50,7 @@ export class WorkoutPage {
       })
       .present()
       .then(() => {
+        
         document.getElementById('select').focus();
       })
 

@@ -22,7 +22,7 @@ export class TimerPage {
   insomnia;
   nativeAudio;
   timerVar;
-
+  doingSet = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, insomnia: Insomnia, nativeAudio: NativeAudio) {
     this.params = navParams.data;
@@ -67,12 +67,21 @@ export class TimerPage {
           this.workout = this.params.reps[this.currentWorkout].workout;
           this.timeLeft = this.params.reps[this.currentWorkout].time;
         } else {
-          this.nativeAudio.play('smolBeep');
-          this.nativeAudio.play('bigBeep');
-          this.workout = "Done!";
-          this.timeLeft = 0;
-          this.insomnia.allowSleepAgain();
-          clearInterval(this.timerVar);
+          if(this.doingSet == this.params.sets){
+            
+            this.nativeAudio.play('bigBeep');
+            this.workout = "Done!";
+            this.timeLeft = 0;
+            this.insomnia.allowSleepAgain();
+            clearInterval(this.timerVar);
+          }else{
+            this.doingSet++;
+            this.currentWorkout = 0;
+            this.workout = this.params.reps[this.currentWorkout].workout;
+            this.timeLeft = this.params.reps[this.currentWorkout].time;
+            this.nativeAudio.play('bigBeep');
+          }
+          
         }
 
 
