@@ -66,7 +66,20 @@ export class WorkoutPage {
  }
 
  playWorkout(){
-  this.navCtrl.push(TimerPage, this.params)
+   console.log(this.params.reps.length)
+   if(this.params.reps.length < 1){
+    this.alertCtrl.create({
+      title: 'No Exersises',
+      message: 'You need excersises in your routine to play it',
+      buttons: [{
+        text: 'Ok',
+      }]
+    })
+    .present()
+   }else{
+    this.navCtrl.push(TimerPage, this.params)
+   }
+  
  }
  changeSets(direction){
   if(direction == 'increase'){
@@ -75,7 +88,13 @@ export class WorkoutPage {
     this.params.sets --;
   }
 }
+reorder(indexes){
+  console.log(indexes);
+  let element = this.params.reps[indexes.from];
+  this.params.reps.splice(indexes.from, 1);
+  this.params.reps.splice(indexes.to, 0, element);
 
+}
   addRep(){
     this.params.reps.push(
       {

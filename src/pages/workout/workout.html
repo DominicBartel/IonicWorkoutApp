@@ -26,6 +26,7 @@
 
 <ion-content>
   <ion-list>
+    <ion-item-group reorder="true" (ionItemReorder)="reorder($event)">
     <ion-item *ngFor = "let set of params.reps; let i = index" [attr.data-index]="i">
       <input [(ngModel)]="set.workout">
       <input id="{{'time_' + i}}" #time value="{{set.time}}" (click)="clickedNumber(time.value)" (blur)="checkNumber(time.value,i)" [(ngModel)]="params.reps[i].time">
@@ -34,9 +35,8 @@
       <button ion-button icon-only item-end (click)="deleteRep(i)" color="danger">
         <ion-icon name="trash" ></ion-icon>
       </button>
-      
-      
     </ion-item>
+  </ion-item-group>
   </ion-list>
 </ion-content>
 <ion-footer><div class="buttons">
