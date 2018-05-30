@@ -22,15 +22,14 @@ export class MyApp {
       {name:"Leg Day", reps:[{workout: "Jumping Jacks", time: 45,}, {workout: "Burpees", time: 20,}, {workout: "High Knees", time: 60,}], sets: 3}
     ])
     
-
+    this.nativeAudio.preloadSimple('smolBeep', 'assets/mp3/short.mp3');
+    this.nativeAudio.preloadSimple('bigBeep', 'assets/mp3/long.mp3');
     this.storage.get('launchCount').then(applaunchCount => { 
         if(applaunchCount) {
         } else {
           console.log(applaunchCount)
             storage.set('launchCount','1');
             storage.set('workouts', startWorkouts)
-            this.nativeAudio.preloadSimple('smolBeep', 'assets/mp3/short.mp3');
-            this.nativeAudio.preloadSimple('bigBeep', 'assets/mp3/long.mp3');
         }
         platform.ready().then(() => {
           
