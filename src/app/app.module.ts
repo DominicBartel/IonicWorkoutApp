@@ -13,7 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Insomnia } from '@ionic-native/insomnia';
 import { NativeAudio } from '@ionic-native/native-audio';
-
+import { AdMobFree } from '@ionic-native/admob-free';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
     Insomnia,
     StatusBar,
     SplashScreen,
+    AdMobFree,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

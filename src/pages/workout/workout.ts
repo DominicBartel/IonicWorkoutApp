@@ -70,7 +70,7 @@ export class WorkoutPage {
    if(this.params.reps.length < 1){
     this.alertCtrl.create({
       title: 'No Exersises',
-      message: 'You need excersises in your routine to play it',
+      message: 'You need exercises in your routine to play it',
       buttons: [{
         text: 'Ok',
       }]
@@ -84,7 +84,7 @@ export class WorkoutPage {
  changeSets(direction){
   if(direction == 'increase'){
     this.params.sets++;
-  } else if(this.params.sets > 0){
+  } else if(this.params.sets > 1){
     this.params.sets --;
   }
 }
@@ -98,7 +98,7 @@ reorder(indexes){
   addRep(){
     this.params.reps.push(
       {
-        workout: 'workout ' + this.params.reps.length, 
+        workout: 'Exercise ' + (this.params.reps.length + 1), 
         time: 30
       }
       
@@ -119,7 +119,7 @@ reorder(indexes){
   }
 
   checkNumber(time, repLocation){
-    if(isNaN(time)){
+    if(isNaN(time) || time < 1){
       this.params.reps[repLocation].time = this.currentClickedNumber;
     }
   }

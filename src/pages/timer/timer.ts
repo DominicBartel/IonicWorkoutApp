@@ -2,12 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Insomnia } from '@ionic-native/insomnia';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 
 
 
-
-
-@IonicPage()
 @Component({
   selector: 'page-timer',
   templateUrl: 'timer.html',
@@ -23,22 +21,56 @@ export class TimerPage {
   nativeAudio;
   timerVar;
   doingSet = 1;
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, insomnia: Insomnia, nativeAudio: NativeAudio) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    insomnia: Insomnia, 
+    nativeAudio: NativeAudio, 
+    public admob: AdMobFree) {
+
     this.params = navParams.data;
     this.insomnia = insomnia;
     this.nativeAudio = nativeAudio;
 
+  }
+  showBanner(){
+    let bannerConfig: AdMobFreeBannerConfig = {
+      isTesting: false, 
+      autoShow: true,
+      id: 'ca-app-pub-8884366005214744/7623386145'
+    }
+    this.admob.banner.config(bannerConfig);
+    this.admob.banner.prepare().then(() =>{
+
+    
+     }).catch(e =>console.log(e));
+  }
+
+  showInterstitial(){
+    let interstitialConfig: AdMobFreeInterstitialConfig = {
+      isTesting: false, 
+      autoShow: true,
+      id: 'ca-app-pub-8884366005214744/5084852713'
+    }
+    this.admob.interstitial.config(interstitialConfig);
+ 
+    this.admob.interstitial.prepare().then(() => {
+        
+    });
   }
 
   ionViewDidLoad() {
     this.insomnia.keepAwake();
     this.nativeAudio.play('smolBeep')
     this.timer();
+    this.showBanner();
 
 
   }
   playPause() {
+    
     if (this.paused) {
       this.paused = false;
       this.timerIcon = 'pause';
@@ -74,6 +106,7 @@ export class TimerPage {
             this.timeLeft = 0;
             this.insomnia.allowSleepAgain();
             clearInterval(this.timerVar);
+            this.showInterstitial();
           }else{
             this.doingSet++;
             this.currentWorkout = 0;
