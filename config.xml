@@ -3,7 +3,7 @@
     <name>Circuit</name>
     <description>A simple circuit trainer.</description>
     <author email="DominicBartel@gmail.com" href="*">Dominic Bartel</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.70:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
