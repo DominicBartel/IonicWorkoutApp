@@ -167,9 +167,10 @@ newAlert(){
 
       this.alertCtrl.create({
         title: 'Please input name',
-
+        enableBackdropDismiss: false,
         buttons: [{
           text: 'Ok',
+          
           handler: () => {
             
             setTimeout(() => {
